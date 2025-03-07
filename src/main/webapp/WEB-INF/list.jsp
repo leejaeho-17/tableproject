@@ -55,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="company" items="${companyList}" varStatus="status">
+                        <c:forEach var="company" items="${list}" varStatus="status">
                             <tr>
                                 <td>${status.index + 1}</td>
                                 <td>${company.cname}</td>
@@ -63,13 +63,14 @@
                                 <td>${company.caddr}</td>
                                 <td>
                                 	<c:if test="${not empty company.cphoto}">
-                                        <img src="${company.cphoto}" alt="Company Photo" class="company-photo">
+                                        <img src="${fronturl}/company/${company.cphoto}${backurl}" alt="Company Photo" class="company-photo">
                                     </c:if>
                                     <c:if test="${empty company.cphoto}">
                                         <span>No Image</span>
                                     </c:if>
                                 </td>
                                 <td>
+                                
                                     <a href="/company/view?id=${company.num}" class="btn btn-info btn-sm">View</a>
                                     <a href="/company/edit?id=${company.num}" class="btn btn-warning btn-sm">Edit</a>
                                     <a href="/company/delete?id=${company.num}" class="btn btn-danger btn-sm">Delete</a>

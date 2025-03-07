@@ -44,24 +44,30 @@ public class CompanyController {
 	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
-			@ModelAttribute CompanyDto dto,
-			@RequestParam("upload") MultipartFile upload) {
-		
-		if(upload.getOriginalFilename().equals("")) {
-			dto.setCphoto("no");
-		} else {
-			String uploadFilename = storageService.uploadFile(bucketName, "company", upload);
-			dto.setCphoto(uploadFilename);
-		}
-		companyService.insertCompany(dto);
-		
-		return "home";
+	        @ModelAttribute CompanyDto dto,
+	        @RequestParam("upload") MultipartFile upload) {
+	    
+	    if (upload.getOriginalFilename().equals("")) {
+	        dto.setCphoto("no");
+	    } else {
+	        // 파일을 네이버 Object Storage에 업로드
+	        String uploadFilename = storageService.uploadFile(bucketName, "company", upload);
+
+	        // DTO에 이미지 URL 저장
+	        dto.setCphoto(uploadFilename);
+	    }
+
+	    companyService.insertCompany(dto);
+	    return "home";
 	}
+
 	
 	@GetMapping("/list")		
 	public String selectAllCompany(Model model) {
-		List<CompanyDto> cdto = companyService.selectAllCompany();
-		model.addAttribute("companyList", cdto);
+		List<CompanyDto> list = companyService.selectAllCompany();
+		model.addAttribute("list", list);
+		model.addAttribute("fronturl", "https://hit24cex8733.edge.naverncp.com/e0XP0bC7Fl");
+		model.addAttribute("backurl", "?type=f&w=30&h=30&faceopt=true&ttype=jpg");
 		return "list";
 	}
 	
