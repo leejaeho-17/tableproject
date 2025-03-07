@@ -15,10 +15,19 @@
             body {
                 font-family: 'Arial', sans-serif;
                 background-color: #f4f6f9;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
             }
             .container {
-            	width;700px;
-                margin-top: 50px;
+            	width: 80%;
+                max-width: 900px;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
                 text-align: center;
             }
             .card {
@@ -33,7 +42,7 @@
     <body>
         <div class="container">
             <h1 class="mb-4">Company List</h1>
-            <div class="card p-4" style="width: 700px;">
+            <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead class="table-dark">
                         <tr>
@@ -42,6 +51,7 @@
                             <th>Company	Hp</th>
                             <th>Company	Address</th>
                             <th>Company Photo</th>
+                            <th>Functions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +61,14 @@
                                 <td>${company.cname}</td>
                                 <td>${company.chp}</td>
                                 <td>${company.caddr}</td>
+                                <td>
+                                	<c:if test="${not empty company.cphoto}">
+                                        <img src="${company.cphoto}" alt="Company Photo" class="company-photo">
+                                    </c:if>
+                                    <c:if test="${empty company.cphoto}">
+                                        <span>No Image</span>
+                                    </c:if>
+                                </td>
                                 <td>
                                     <a href="/company/view?id=${company.num}" class="btn btn-info btn-sm">View</a>
                                     <a href="/company/edit?id=${company.num}" class="btn btn-warning btn-sm">Edit</a>
