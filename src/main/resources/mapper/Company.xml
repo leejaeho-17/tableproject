@@ -4,4 +4,7 @@
 <insert id="insertCompany" parameterType="CompanyDto">
 	insert into company (cname, chp, caddr, cphoto, gaipday) values (#{cname},#{chp},#{caddr},#{cphoto},now())
 </insert>
+<select id="selectAllCompany" resultType="CompanyDto">
+	select * from company order by num
+</select>
 </mapper>

@@ -47,7 +47,7 @@ function goBack() {
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center">
-							<button type="submit" class="btn btn-success"	>제출하기</button>
+							<button type="submit" class="btn btn-success">제출하기</button>
 							<button type="button" class="btn btn-success" onclick="goBack()">이전으로</button>
 						</td>
 					</tr>

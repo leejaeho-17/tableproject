@@ -1,7 +1,10 @@
 package company.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,14 +32,14 @@ public class CompanyController {
 	@Autowired
 	NcpObjectStorageService storageService;
 	
-	@GetMapping("/insert")
-	public String company() {
-		return "insertcompany";
-	}
-	
 	@GetMapping("/")
 	public String home() {
 		return "home";
+	}
+	
+	@GetMapping("/insert")
+	public String company() {
+		return "insertcompany";
 	}
 	
 	@PostMapping("/insert")
@@ -54,6 +57,14 @@ public class CompanyController {
 		
 		return "home";
 	}
+	
+	@GetMapping("/list")		
+	public String selectAllCompany(Model model) {
+		List<CompanyDto> cdto = companyService.selectAllCompany();
+		model.addAttribute("companyList", cdto);
+		return "list";
+	}
+	
 	
 	
 	
