@@ -20,5 +20,6 @@
     </head>
     <body>
         <h1>home</h1>
+        <a href="/insert">insert</a>
     </body>
 </html>
