@@ -19,7 +19,7 @@ body * {
 </style>
 <script>
 function goBack() {
-    history.back();
+    location.href="/";
 }
 </script>
 </head>
