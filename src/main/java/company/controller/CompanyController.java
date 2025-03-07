@@ -39,6 +39,7 @@ public class CompanyController {
 	public String home() {
 		return "home";
 	}
+	
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request,
 			@ModelAttribute CompanyDto dto,
