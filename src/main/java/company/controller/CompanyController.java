@@ -35,7 +35,7 @@ public class CompanyController {
 		return "insertcompany";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
