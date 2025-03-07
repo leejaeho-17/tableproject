@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
-
 public class CompanyController {
 	@Autowired
 	CompanyService companyService;
@@ -35,7 +34,7 @@ public class CompanyController {
 		return "insertcompany";
 	}
 	
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home() {
 		return "home";
 	}
