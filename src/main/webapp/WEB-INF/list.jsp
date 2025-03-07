@@ -37,11 +37,20 @@
             .table th, .table td {
                 vertical-align: middle;
             }
+            
+            .rbtn {
+            	float: right;
+            }
         </style>
+        <script>
+			function goBack() {
+			    location.href="/";
+			}
+		</script>
     </head>
     <body>
         <div class="container">
-            <h1 class="mb-4">Company List</h1>
+            <h1 class="mb-4">Company List <button type="button" class="btn btn-outline-secondary rbtn" onclick="goBack()">이전으로</button></h1>
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
                     <thead class="table-dark">
