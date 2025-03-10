@@ -19,4 +19,16 @@ CompanyMapper companyMapper;
 	public List<CompanyDto> selectAllCompany() {
 		return companyMapper.selectAllCompany();
 	}
+	
+	public void deleteCompanyByNum(int num) {
+		companyMapper.deleteCompanyByNum(num);
+	}
+	
+	public CompanyDto selectCompanyByNum(int num) {
+		return companyMapper.selectCompanyByNum(num);
+	}
+	
+	public void updateCompanyByNum(CompanyDto dto) {
+		companyMapper.updateCompanyByNum(dto);
+	}
 }

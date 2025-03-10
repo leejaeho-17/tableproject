@@ -71,7 +71,41 @@ public class CompanyController {
 		return "list";
 	}
 	
+	@GetMapping("/delete")
+	public String deleteCompanyByNum(int num) {
+		companyService.deleteCompanyByNum(num);
+		return "redirect:/list";
+	}
 	
+	@GetMapping("/view")
+	public String viewCompany(@RequestParam("num") int num, Model model) {
+		CompanyDto cdto = companyService.selectCompanyByNum(num);
+		model.addAttribute("company", cdto);
+		model.addAttribute("fronturl", "https://hit24cex8733.edge.naverncp.com/e0XP0bC7Fl");
+		model.addAttribute("backurl", "?type=f&w=30&h=30&faceopt=true&ttype=jpg");
+		return "view";
+	}
+	@GetMapping("/edit")
+	public String editCompany(@RequestParam("num") int num, Model model) {
+		CompanyDto cdto = companyService.selectCompanyByNum(num);
+		model.addAttribute("company", cdto);
+		model.addAttribute("fronturl", "https://hit24cex8733.edge.naverncp.com/e0XP0bC7Fl");
+		model.addAttribute("backurl", "?type=f&w=30&h=30&faceopt=true&ttype=jpg");
+		return "edit";
+	}
 	
-	
+	@PostMapping("/update")
+	public String updateCompany(
+			@ModelAttribute CompanyDto dto,
+			@RequestParam("upload") MultipartFile upload) {
+		if(!upload.getOriginalFilename().equals("")) {
+			String uploadFilename = storageService.uploadFile(bucketName, "company", upload);
+			dto.setCphoto(uploadFilename);
+		} else {
+			CompanyDto existingCompany = companyService.selectCompanyByNum(dto.getNum());
+			dto.setCphoto(existingCompany.getCphoto());	
+		}
+		companyService.updateCompanyByNum(dto);
+		return "redirect:/list";
+	}
 }

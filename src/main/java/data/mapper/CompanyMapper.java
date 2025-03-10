@@ -10,4 +10,7 @@ import data.dto.CompanyDto;
 public interface CompanyMapper {
 	public void insertCompany(CompanyDto dto);
 	public List<CompanyDto> selectAllCompany();
+	public void deleteCompanyByNum(int num);
+	public CompanyDto selectCompanyByNum(int num);
+	public void updateCompanyByNum(CompanyDto dto);
 }

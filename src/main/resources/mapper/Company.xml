@@ -7,4 +7,13 @@
 <select id="selectAllCompany" resultType="CompanyDto">
 	select * from company order by num
 </select>
+<delete id="deleteCompanyByNum" parameterType="int">
+	delete from company where num = #{num}
+</delete>
+<select id="selectCompanyByNum" parameterType="int" resultType="CompanyDto">
+	select * from company where num = #{num}
+</select>
+<update id="updateCompanyByNum" parameterType="CompanyDto">
+	update company set cname = #{cname}, chp = #{chp}, caddr = #{caddr}, cphoto = #{cphoto} where num = #{num}
+</update>
 </mapper>

@@ -80,10 +80,10 @@
                                 </td>
                                 <td>
                                 
-                                    <a href="/company/view?id=${company.num}" class="btn btn-info btn-sm">View</a>
-                                    <a href="/company/edit?id=${company.num}" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="/company/delete?id=${company.num}" class="btn btn-danger btn-sm">Delete</a>
-                                </td>
+                                    <a href="/view?num=${company.num}" class="btn btn-info btn-sm">View</a>
+                                    <a href="/edit?num=${company.num}" class="btn btn-warning btn-sm">Edit</a>
+									<a href="/delete?num=${company.num}" class="btn btn-danger btn-sm" onclick="return confirm('정말로 삭제하시겠습니까?');"> Delete </a>
+							</td>
                             </tr>
                         </c:forEach>
                     </tbody>
